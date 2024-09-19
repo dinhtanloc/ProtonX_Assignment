@@ -9,7 +9,7 @@ export function generateImageVariationApiCall(data: {
 	const { dataToPost } = data;
 	return axios({
 		method: 'post',
-		url: `${HOST}${AI_DEMOS_URI}/generate-image-variation`,
+		url: `https://2ed4-34-168-140-68.ngrok-free.app/sam2`,
 		data: dataToPost,
 	});
 }

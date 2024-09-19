@@ -5,7 +5,7 @@ export function replaceObjectApiCall(data) {
     const { dataToPost } = data;
     return axios({
         method: 'post',
-        url: 'http://127.0.0.1:5000/replace-object',
+        url: 'https://2ed4-34-168-140-68.ngrok-free.app/sam2',
         data: dataToPost,
     });
 }
