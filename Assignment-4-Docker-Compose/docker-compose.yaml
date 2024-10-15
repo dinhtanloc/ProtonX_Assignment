@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  flask_server:
+    build:
+      context: .
+      dockerfile: ./server.Dockerfile
+    image: protonx/ai-devs-02:dinhtanloc-server-v1.0 # TODO 1: Nhập tên server image của bạn. protonx/ai-devs-02:{your_name}-server-v1.0
+    container_name: flask_server
+    platform: linux/amd64
+    volumes:
+      - ./:/app
+    ports:
+      - "5002:5002" # TODO 2: Chuyển tiếp cổng 5002 vào 5002
+    environment:
+      - FLASK_ENV=development
+      - API_TOKEN= 23f47d079cfa764a3348dc79798ce61b817cece6a80e51836eb9c30709c6f2bb # TODO 3: Nhập API_KEY từ Together AI
+    networks:
+      - my_network
+
+  streamlit_client:
+    build:
+      context: .
+      dockerfile: ./client.Dockerfile
+    image: protonx/ai-devs-02:dinhtanloc-client-v1.0 # TODO 4: Nhập tên server image của bạn. protonx/ai-devs-02:{your_name}-client-v1.0
+    container_name: streamlit_client
+    platform: linux/amd64
+    volumes:
+      - ./:/app  
+    ports:
+      - "8501:8501" # TODO 5: Chuyển tiếp cổng 8501 vào 8501
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
